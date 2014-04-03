@@ -673,9 +673,8 @@ class Su_Tools {
 	}
 
 	public static function reset_users_cache() {
-		if ( $_GET['update'] === 'del' || $_GET['update'] === 'add' || $_GET['updated'] === '1' ) delete_transient( 'su/users_cache' );
+		if ( isset($_GET['update']) && $_GET['update'] === 'del' || isset($_GET['update']) && $_GET['update'] === 'add' || isset($_GET['updated']) && $_GET['updated'] === '1' ) delete_transient( 'su/users_cache' );
 	}
-
 	public static function get_taxonomies() {
 		$taxes = array();
 		foreach ( (array) get_taxonomies( '', 'objects' ) as $tax ) $taxes[$tax->name] = $tax->label;
